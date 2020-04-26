@@ -1,5 +1,5 @@
 {
-  "homepage": "http://VYarem4yk.github.io/calk",
+  "homepage": "http://VYarem4yk.github.io/my-app",
   "name": "calk",
   "version": "0.1.0",
   "private": true,
@@ -12,8 +12,6 @@
     "react-scripts": "3.4.1"
   },
   "scripts": {
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",

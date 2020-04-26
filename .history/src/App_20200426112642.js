@@ -6,24 +6,24 @@ class App extends Component {
     this.state = {
       value: [],
       result: "",
-      curentValue: "",
+      curVal: "",
       disabled: true,
       resultShow: false,
     };
   }
 
-  handleAdd = () => {
+  plusHandlerBTN = () => {
     this.setState({
-      value: [...this.state.value, +this.state.curentValue],
+      value: [...this.state.value, +this.state.curVal],
       disabled: true,
       resultShow: false,
     });
   };
 
-  showResult = () => {
+  sumHandlerBTN = () => {
     this.setState({
-      result: this.state.value.reduce(function (accumulator, curent) {
-        return accumulator + curent;
+      result: this.state.value.reduce(function (acc, curr) {
+        return acc + curr;
       }),
       resultShow: true,
     });
@@ -34,7 +34,7 @@ class App extends Component {
       this.setState({ disabled: false });
     }
     console.log(typeof event.target.value);
-    this.setState({ curentValue: event.target.value });
+    this.setState({ curVal: event.target.value });
   };
 
   render() {
@@ -43,12 +43,12 @@ class App extends Component {
         <input
           type="Number"
           onChange={this.inputChangeHandler}
-          value={this.state.disabled ? "" : this.state.curentValue}
+          value={this.state.disabled ? "" : this.state.CurVal}
         ></input>
-        <button onClick={this.handleAdd} disabled={this.state.disabled}>
+        <button onClick={this.plusHandlerBTN} disabled={this.state.disabled}>
           Сложить
         </button>
-        <button onClick={this.showResult}>Результат</button>
+        <button onClick={this.sumHandlerBTN}>Результат</button>
         <h3>
           {this.state.resultShow
             ? this.state.value.join("+") + "=" + this.state.result
