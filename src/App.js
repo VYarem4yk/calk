@@ -7,16 +7,16 @@ class App extends Component {
       value: [],
       result: "",
       curentValue: "",
-      disabled: true,
-      resultShow: false,
+      isDisabled: true,
+      isResultShow: false,
     };
   }
 
   handleAdd = () => {
     this.setState({
       value: [...this.state.value, +this.state.curentValue],
-      disabled: true,
-      resultShow: false,
+      isDisabled: true,
+      isResultShow: false,
     });
   };
 
@@ -25,13 +25,13 @@ class App extends Component {
       result: this.state.value.reduce(function (accumulator, curent) {
         return accumulator + curent;
       }),
-      resultShow: true,
+      isResultShow: true,
     });
   };
 
-  inputChangeHandler = (event) => {
+  inputOnChange = (event) => {
     if (event.target.value > 0) {
-      this.setState({ disabled: false });
+      this.setState({ isDisabled: false });
     }
     console.log(typeof event.target.value);
     this.setState({ curentValue: event.target.value });
@@ -42,15 +42,15 @@ class App extends Component {
       <Fragment>
         <input
           type="Number"
-          onChange={this.inputChangeHandler}
-          value={this.state.disabled ? "" : this.state.curentValue}
+          onChange={this.inputOnChange}
+          value={this.state.isDisabled ? "" : this.state.curentValue}
         ></input>
-        <button onClick={this.handleAdd} disabled={this.state.disabled}>
+        <button onClick={this.handleAdd} disabled={this.state.isDisabled}>
           Сложить
         </button>
         <button onClick={this.showResult}>Результат</button>
         <h3>
-          {this.state.resultShow
+          {this.state.isResultShow
             ? this.state.value.join("+") + "=" + this.state.result
             : this.state.value.join("+")}
         </h3>
